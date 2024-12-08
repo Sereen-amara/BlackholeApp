@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>List Criminals</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Optional styling for table */
+        .table thead th {
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+
+        .table tbody td {
+            vertical-align: middle;
+        }
+
+        .container {
+            max-width: 900px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <h1>All Criminals</h1>
+
+    <!-- Search Functionality -->
+    <form th:action="@{/criminals/search}" method="get" class="mt-4 mb-4">
+        <div class="input-group">
+            <input type="text" name="query" class="form-control" placeholder="Search by name or description" required>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+
+    <!-- Criminals Table -->
+    <table class="table table-striped table-bordered mt-4">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Date of Birth</th>
+            <th>Description</th>
+            <th>Connected To</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="criminal : ${criminals}">
+            <td th:text="${criminal.id}"></td>
+            <td th:text="${criminal.name}"></td>
+            <td th:text="${criminal.age}"></td>
+            <td th:text="${criminal.dob}"></td>
+            <td th:text="${criminal.description}"></td>
+            <td th:text="${criminal.connectedTo}"></td>
+            <td class="text-center">
+                <div class="action-buttons">
+                    <a th:href="@{'/criminals/edit/' + ${criminal.id}}" class="btn btn-warning btn-sm">Edit</a>
+                    <a th:href="@{'/criminals/delete/' + ${criminal.id}}" class="btn btn-danger btn-sm"
+                       onclick="return confirm('Are you sure you want to delete this criminal?');">Delete</a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Add New Criminal Button -->
+    <a th:href="@{/criminals/add}" class="btn btn-success mt-3">Add New Criminal</a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
