@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/criminals") // Base mapping for criminal-related endpoints
+@RequestMapping("/criminals")
 public class CriminalController {
 
     @Autowired
@@ -28,6 +28,7 @@ public class CriminalController {
         model.addAttribute("criminals", null);
         return "dashboard"; // Render the dashboard.html template
     }
+
 
     // Search for criminals
     @GetMapping("/search")
@@ -80,5 +81,9 @@ public class CriminalController {
 
         // Redirect to the dashboard
         return "redirect:/criminals/dashboard";
+
+
     }
+
+
 }

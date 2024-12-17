@@ -54,12 +54,12 @@
         </thead>
         <tbody>
         <tr th:each="criminal : ${criminals}">
-            <td th:text="${criminal.id}"></td>
-            <td th:text="${criminal.name}"></td>
-            <td th:text="${criminal.age}"></td>
-            <td th:text="${criminal.dob}"></td>
-            <td th:text="${criminal.description}"></td>
-            <td th:text="${criminal.connectedTo}"></td>
+            <td th:utext="${criminal.id}"></td> <!-- Stored XSS vulnerable -->
+            <td th:utext="${criminal.name}"></td> <!-- Stored XSS vulnerable -->
+            <td th:utext="${criminal.age}"></td> <!-- Stored XSS vulnerable -->
+            <td th:utext="${criminal.dob}"></td> <!-- Stored XSS vulnerable -->
+            <td th:utext="${criminal.description}"></td> <!-- Stored XSS vulnerable -->
+            <td th:utext="${criminal.connectedTo}"></td> <!-- Stored XSS vulnerable -->
         </tr>
         </tbody>
     </table>
@@ -69,6 +69,17 @@
         <a th:href="@{/criminals/add}" class="btn btn-primary">Add Criminal</a>
     </div>
 </div>
+<script>
+    // DOM-based XSS Vulnerability
+    const urlParams = new URLSearchParams(window.location.search);
+    const query = urlParams.get('query'); // Retrieve user input from URL
+    if (query) {
+        document.write("<h3> " + query + "</h3>"); // inject unsanitized input into DOM
+    }
+</script>
+
+
+
 
 <!-- Footer with Logout Button -->
 <footer class="footer">

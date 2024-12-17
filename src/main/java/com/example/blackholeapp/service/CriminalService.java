@@ -21,7 +21,8 @@ public class CriminalService {
         return criminalRepository.findAll();
     }
 
+    // Using the insecure method from the repository
     public List<Criminal> searchCriminals(String query) {
-        return criminalRepository.findByNameContainingIgnoreCaseOrDescriptionContainingIgnoreCase(query, query);
+        return criminalRepository.insecureSearchTest(query);//changed the query for vulnerable SQL
     }
 }
