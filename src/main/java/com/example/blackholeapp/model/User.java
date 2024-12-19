@@ -27,6 +27,13 @@ public class User {
     )
     private Set<Role> roles;
 
+    public User(long l, String user2, String mail, String password) {
+    }
+
+    public User() {
+
+    }
+
     // Getters and setters
     public Long getId() {
         return id;

@@ -25,6 +25,22 @@ public class Criminal {
     @Column(nullable = false)
     private String connectedTo;
 
+    // No-arg constructor (required for JPA/Hibernate)
+    public Criminal() {}
+
+    // All-args constructor for convenience
+    public Criminal(Long id, String name, int age, LocalDate dob, String description, String connectedTo) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.dob = dob;
+        this.description = description;
+        this.connectedTo = connectedTo;
+    }
+
+    public Criminal(long id, String johnDoe, int age, String date, String aCriminal, String none) {
+    }
+
     // Getters and setters
     public Long getId() {
         return id;
