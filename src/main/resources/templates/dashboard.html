@@ -64,11 +64,14 @@
         </tbody>
     </table>
 
-    <!-- Add Criminal Button (visible only to Admins) -->
+    <!-- Admin Section -->
     <div th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="mt-4">
         <a th:href="@{/criminals/add}" class="btn btn-primary">Add Criminal</a>
+        <a th:href="@{/admin/assign-roles}" class="btn btn-secondary">Assign Roles</a>
     </div>
 </div>
+
+
 
 <!-- Footer with Logout Button -->
 <footer class="footer">
