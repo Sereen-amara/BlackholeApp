@@ -63,14 +63,14 @@ The Blackhole Application is a secure and vulnerable web application designed to
 ## Usage
 Admin Credentials
 
-Username: admin
-Password: Password123.
-Permissions: Add criminals, assign roles, and view all records.
-User Credentials
+- Username: admin
+- Password: Password123.
+- Permissions: Add criminals, assign roles, and view all records.
+- User Credentials
 
-Username: Test
-Password: Test123.
-Permissions: Search records only.
+- Username: Test
+ - Password: Test123.
+- Permissions: Search records only.
 
 
 
